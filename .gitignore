@@ -9,6 +9,7 @@ env/
 ENV/
 .venv/
 .env/
+.env
 
 # Distribution / packaging
 build/
@@ -42,3 +43,4 @@ docker-compose.override.yml
 
 # Sensitive credentials
 credentials.json
+token.json

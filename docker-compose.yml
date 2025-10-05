@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  gmail-agent:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+    
+    # Name the container for easier management
+    container_name: gmail_agent_container
+    
+    # Forward the exposed port 5001 from the container to port 5001 on the host machine
+    ports:
+      - "5001:5001"
+      
+    # Load environment variables from the .env file
+    env_file:
+      - .env
+      
+    # Mount local files into the container. This is CRITICAL for Google Auth.
+    # It ensures that 'credentials.json' is available and that 'token.json'
+    # persists after the first login.
+    volumes:
+      - ./credentials.json:/app/credentials.json
+      - ./token.json:/app/token.json
